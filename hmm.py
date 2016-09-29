@@ -12,11 +12,12 @@ from matplotlib import cm, pyplot as plt
 import matplotlib.dates as dates
 import pandas as pd
 import datetime
+from pandas_datareader import data, wb
 
-beginDate ='2015-01-01'
-endDate = '2015-01-01'
+
 NofHiddenStates = 6
-
-data = get_price('CSI300.INDX', start_date = beginDate, end_date=endDate, frequency='1d')
-data[0:9]
-
+start = datetime.datetime(2005, 1, 1)
+end = datetime.datetime(2016, 1, 27)
+data = data.DataReader("GOOGL", 'yahoo', start, end)
+#('CSI300.INDX', start_date = beginDate, end_date=endDate, frequency='1d')
+print data.head()
